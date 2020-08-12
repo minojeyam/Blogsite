@@ -15,3 +15,6 @@ Insert new user into MySql Database  in Tamil
 Jquery Form Validation in Registration Form by PHP in Tamil
 Login User for With PHP Sessionby PHP in Tamil
 Simple blog with comment System With PHP and MySql 
+
+// For Color Palettes
+https://flatuicolors.com/palette/fr
