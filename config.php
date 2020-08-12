@@ -13,7 +13,13 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+// printing directly to the page
+#code...
 # echo "Connected successfully <br>";
-echo("<script>console.log('Connected successfully');</script>");
+
+// printing in console.log
+#code...
+$db_status = "<script> console.log('Connected to phpmyadmin successfully'); </script>";
+echo $db_status;
 
 ?>

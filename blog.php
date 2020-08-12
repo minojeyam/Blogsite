@@ -38,13 +38,26 @@ include ("config.php")
         <li><a href="blog.php">Blog</a></li>
         <li><a href="#">About Us</a></li>
         <li><a href="#">Contact Us</a></li>
-        <li><a href="logout.php">Signin</a></li>
+
+        <!-- php code goes here -->
+        <?php
+        // If a session going on then display Logout option else Signin
+        if (isset($_SESSION['s_username'])) {
+          # code...
+          echo "<li><a href='logout.php'>Logout</a></li>";
+        } else {
+          # code...
+          echo "<li><a href='signin.php'>Signin</a></li>";
+        }        
+        ?>
       </ul>
     </nav>
 
     <!-- Container -->
     <div id="comments">
+      <br><br>
         <center><img src="images/blog.jpg" alt="Laptop" id="blog_img"></center>
+      <br>  
         <p>
           Lorem ipsum dolor sit amet, sapien sollicitudin ad vehicula quisque cras. Est felis per neque. Lorem interdum aenean wisi, quam a odio ante at pellentesque cras, morbi eu at sed, erat sem sem condimentum nisl ac consectetuer. Vitae felis tincidunt aliquet placerat interdum quis, nisl eu ante adipisci imperdiet praesent integer, torquent rhoncus tempus eu et tristique sapien, in ac ac cubilia massa urna ut, perferendis vel. Ultrices quidem curabitur praesent natoque fusce. Wisi quam dui et, libero lobortis, convallis amet tortor fringilla eu, vel lectus imperdiet a amet at interdum. Placerat mattis dolor vulputate donec quam sollicitudin, habitant commodo aliquet. Nonummy inceptos ut lacus, in nec mollis. Cursus massa ac libero, pellentesque justo odio vestibulum facilisis, nam magna, eros pretium purus.
         </p>
@@ -59,20 +72,27 @@ include ("config.php")
           <table id="login_table">
             <tr>
               <td>Name:</td> 
-        <?php 
-          if(isset($_SESSION['s_username'])) {
-            echo '<td><input type="text" name="s_username" value="'.$_SESSION['s_username'].'" readonly required /></td>';
-          } else {
-            echo "<td><a href='signin.php'>Please Login To Access</a></td>";
-          } 
-        ?>
+              <!-- php code goes here -->
+              <?php 
+              // Getting name from $_SESSION
+              #code...
+              if(isset($_SESSION['s_username'])) {
+              echo '<td><input type="text" name="s_username" value="'.$_SESSION['s_username'].'" readonly required /></td>';
+              } else {
+              echo "<td><a href='signin.php'>Please Login To Access</a></td>";
+              // If there is no value in $_SESSION
+              //$_POST[''];
+              } 
+              ?>
             </tr>
             <tr>
               <td>Comment:</td>
               <td><textarea name="comment" required></textarea></td>
             </tr>
             <tr>
+              <center>
               <td colspan="2"><input type="submit" name="b_submit" value="Post Your Comments Here" id="b_subtn"/></td>
+            </center>
             </tr>
           </table>
         </form>
@@ -85,23 +105,31 @@ include ("config.php")
     // Getting the value from comment form
     $s_username = $_POST["s_username"];
     $comment = $_POST["comment"];
-    //Inserting into comment db
-    $sql = "INSERT INTO comments(name,comment,logs)VALUES('$s_username','$comment',NOW())";
-    // Connecting Query to DB
-    $conn -> query($sql);
+    // If name and comment box is filled only, insert that to db
+    if ($s_username != "" && $comment != "") {
+      # code...
+      //Inserting into comment db
+      $sql = "INSERT INTO comments(name,comment,logs)VALUES('$s_username','$comment',NOW())";
+      // Connecting Query to DB
+      $conn -> query($sql);
+    } else {
+      # code...
+      echo "<p>Login and Drop Your Comments Here!</p>";
+    }
   }
 
   // Getting the inserted comments from db
-  $sql = "SELECT * FROM comments";
+  $sql = "SELECT * FROM comments ORDER BY id DESC";
   $result = $conn->query($sql);
   if ($result -> num_rows>0) {
     //fetch_assoc() - will fetch data from db and save it in the $row
     # code...
     while($row=$result->fetch_assoc()){
       
-      echo "<p><b>{$row['name']}</b> &nbsp;&nbsp; 
-      <i>{$row['logs']}</i></p>
-      <p>{$row['comment']}</p><hr>";
+      echo "<br><br>
+      <hr><p style='margin-left:30px; height:5px; padding:2px;'><b>{$row['name']}</b> &nbsp;&nbsp; 
+      <i>{$row['logs']}</i></p><br>
+      <p style='margin-left:30px;'>{$row['comment']}</p><hr>";
 
     }
   } else {

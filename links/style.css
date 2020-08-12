@@ -4,58 +4,58 @@
 }
 
 html {
-  background-color: beige;
+  background-color: #0c2461;
 }
 
 body {
-  background-color: aquamarine;
+  background-color: #3c6382;
   height: 900px;
   width: 1000px;
   margin: 10px auto;
 }
 
 #header {
-  background-color: #ffb3b3;
+  background-color: #60a3bc;
   height: 100px;
   width: 100%;
 }
 
 #navbar {
   text-align: right;
-  background-color: #ff8080;
+  background-color: #82ccdd;
   height: 40px;
   width: 100%;
   padding-top: 10px;
 }
 
 #container {
-  height: 720px;
+  height: 730px;
   width: 100%;
 }
 
 #comments {
   height: auto;
   width: 100%;
-  background-color: aquamarine;
+  background-color: #3c6382;
 }
 
 #footer {
-  background-color: #ffb3b3;
-  height: 40px;
+  background-color: #60a3bc;
+  height: 30px;
   width: 100%;
   text-align: center;
-  padding-top: 60px;
+  padding-top: 50px;
   position: relative;
 }
 
 #leftbox {
-  background-color: #e2aaaa;
+  background-color: #38ada9;
   height: 100%;
   width: 25%;
   float: left;
 }
 #rightbox {
-  background-color: #ebb2b2;
+  background-color: #079992;
   height: 100%;
   width: 75%;
   float: right;
@@ -76,7 +76,7 @@ body {
 }
 #nav_ul li a:hover,
 #lbox_ul li a:hover {
-  color: brown;
+  color: #079992;
 }
 
 #lbox_ul li {
@@ -138,7 +138,7 @@ body {
 }
 #login_table a:hover {
   text-decoration: underline;
-  color: #ff8080;
+  color: #bdbdbd;
 }
 #login_table input[type="text"],
 #login_table input[type="password"],
@@ -168,13 +168,14 @@ body {
   font-weight: bold;
 }
 #rebtn {
-  background-color: navy;
-  border: #000;
+  background-color: #0277bd;
+  border: #1565c0;
 }
 #subtn {
-  background-color: brown;
-  border: #000;
+  background-color: #c62828;
+  border: #b71c1c;
 }
+
 #login_table tr td #b_subtn {
   width: 250px;
   height: 30px;
@@ -184,9 +185,11 @@ body {
   font-weight: bold;
   background-color: cadetblue;
 }
-#rebtn:active,
+#rebtn:active {
+  background-color: #29b6f6;
+}
 #subtn:active {
-  background-color: greenyellow;
+  background-color: #ef5350;
 }
 
 #newuser_login {

@@ -1,8 +1,17 @@
-// custom jQuery script
+// custom jQuery script for new_user.php
 
 $(document).ready(function () {
   // password_err validation
   $("#pw2").on("blur", passwordCheck);
+
+  // check User Availability Using Jquery in PHP,Mysql
+  $("#username_id").keyup(function () {
+    $.post("check_user.php", { name: new_user_reg.username.value }, function (
+      data
+    ) {
+      $("#feedback").html(data);
+    });
+  });
 });
 
 //passwordCheck Function

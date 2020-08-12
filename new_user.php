@@ -1,6 +1,6 @@
 <?php
 # Including config.php file - MySQL Configuration File
-include ("config.php")
+include ("config.php");
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ include ("config.php")
       <ul id="nav_ul">
         <li><a href="index.php">Home</a></li>
         <li><a href="product.php">Product</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="blog.php">Blog</a></li>
         <li><a href="#">Abour Us</a></li>
         <li><a href="#">Contact Us</a></li>
         <li><a href="signin.php">Signin</a></li>
@@ -52,7 +52,22 @@ include ("config.php")
         <legend>
           New User Registration
         </legend>
-        <form autocomplete="off" method="POST" action="new_user.php">
+
+              <span id="feedback" style="margin:10px"></span>
+              <!-- php code goes here -->
+              <?php
+              // If a user typed his username, it will display in this span tag or err meg will displayed
+              if (isset($_GET['err'])) {
+                // err displaying code 
+                //$_GET['err'] : get the err meg from check_user.php
+                # code...
+                echo "<p style='color:red;'>" .$_GET['err']. "</p>";
+              } else {
+                # code...
+              }
+              ?>
+
+        <form name="new_user_reg" autocomplete="off" method="POST" action="new_user.php">
           <table id="login_table">
             <tr>
               <td>Name:</td>
@@ -60,7 +75,7 @@ include ("config.php")
             </tr>
             <tr>
             <td>Username:</td>
-              <td><input type="text" name="username" required /></td>
+              <td><input type="text" name="username" id="username_id" required /></td>
             </tr>
              <tr>
             <td>Email:</td>
