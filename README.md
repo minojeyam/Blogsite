@@ -17,4 +17,4 @@ Login User for With PHP Sessionby PHP in Tamil
 Simple blog with comment System With PHP and MySql 
 
 // For Color Palettes
-https://flatuicolors.com/palette/fr
+https://flatuicolors.com/
