@@ -26,7 +26,7 @@
       <ul id="nav_ul">
         <li><a href="index.php">Home</a></li>
         <li><a href="product.php">Product</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="blog.php">Blog</a></li>
         <li><a href="#">About Us</a></li>
         <li><a href="#">Contact Us</a></li>
         <li><a href="signin.php">Signin</a></li>

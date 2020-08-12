@@ -1,3 +1,9 @@
+<?php
+# Including config.php file - MySQL Configuration File
+include ("config.php")
+?>
+
+<!DOCTYPE html>
 <html>
   <head>
     <title>
@@ -11,7 +17,7 @@
     <script src="links/script.js"></script>
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="links/style.css">
     
   </head>
   <body>
@@ -46,7 +52,7 @@
         <legend>
           New User Registration
         </legend>
-        <form autocomplete="off">
+        <form autocomplete="off" method="POST" action="new_user.php">
           <table id="login_table">
             <tr>
               <td>Name:</td>
@@ -76,21 +82,21 @@
              <td>Security Question:</td>
               <td>
                 <select name="secqu" required >
-                  <option>What is your pet name?</option>
-                  <option>Whats your car model?</option>
-                  <option>What is your fav color?</option>
-                  <option>Which game do you like best?</option>
-                  <option>Where to you live?</option>
+                  <option value="What is your pet name?">What is your pet name?</option>
+                  <option value="Whats your car model?">Whats your car model?</option>
+                  <option value="What is your fav color?">What is your fav color?</option>
+                  <option value="Which game do you like best?">Which game do you like best?</option>
+                  <option value="Where to you live?">Where to you live?</option>
                 </select>
               </td>
             </tr>
             <tr>
              <td>Answer:</td>
-              <td><input type="text" required /></td>
+              <td><input type="text" name="secanswer" required /></td>
             </tr>
             <tr>
-              <td><input type="submit" value="Save" id="subtn"/></td>
-              <td><input type="reset" value="Reset" id="rebtn" /></td>                
+              <td><input type="submit" name="submit" value="Save" id="subtn"/></td>
+              <td><input type="reset" name="reset" value="Reset" id="rebtn" /></td>                
             </tr>
             <tr >
               <td colspan = "2">
@@ -103,6 +109,56 @@
         </form>
       </fieldset>
     </div> 
+
+    <!-- php code goes here -->
+    <?php
+      //php code for form fields checking
+      if (isset($_POST["submit"])) {
+        # code...
+        $name = $_POST["name"];
+        $username = $_POST["username"];
+        $email = $_POST["email"];
+        $password1 = $_POST["password1"];
+        $password2 = $_POST["password2"];
+        $secqu = $_POST["secqu"];
+        $secanswer = $_POST["secanswer"];
+
+        if($name != "" && $username != "" && $email != "" && $password1 != "" && $password2 != "" && $secqu != "" && $secanswer != "")
+         {
+          if ($password1 == $password2){
+
+            // sql INSERT Query goes here
+            //$sql = "INSERT INTO users('name','username','email','password','question','answer')VALUES('$name','$username','$email','$password1','$secqu','$secanswer')";
+            $sql = "INSERT INTO users(name,username,email,password,question,answer)VALUES('$name','$username','$email','$password1','$secqu','$secanswer')";
+           
+            // if else to check the Insertation Success or Err Meg Prining 
+            if ($conn->query($sql)) {
+              # code...
+              // Welcome Message 
+              // echo ("<p class='match'> Data Stored Successfully. <br> Welcome to the family. </p>");
+
+              // passing this to signin.php and ask them to sign in there - using header (Using GET function)
+              header("location:signin.php?meg=<p class='match'> Data Stored Successfully. <br> Welcome to the family. Please Login Here!</p>");
+            
+            } else {
+              # code...
+              echo ("<p class='error'> Insertation Unsuccessful <br> Try Again</p>");
+            }
+            
+          }else {
+            # code...
+            echo ("<p class='error'> Password Mismatched </p>");
+          }
+        } else{ 
+          # code...
+          echo ("<p class='error'> All The Fields Required </p>");
+        }
+
+      } else {
+        # code...
+        echo ("<p> Please Fill All The Fields </p>");
+      }
+    ?>
 
     <!-- Footer -->
     <footer id="footer">
