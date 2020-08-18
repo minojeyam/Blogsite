@@ -31,6 +31,7 @@ body {
 #container {
   height: 730px;
   width: 100%;
+  background-color: #3c6382;
 }
 
 #comments {
@@ -218,4 +219,55 @@ h2 {
 #blog_img {
   width: 300px;
   height: 250px;
+}
+
+#welcome_meg {
+  text-align: center;
+  text-transform: uppercase;
+}
+#message {
+  width: 800px;
+  height: 70px;
+  margin-left: 50px;
+  margin-top: 10px;
+  border-radius: 7px;
+  font-size: large;
+}
+#megbutton {
+  margin-right: 150px;
+  margin-top: 10px;
+  border-radius: 7px;
+  font-size: small;
+  width: 100px;
+  height: 40px;
+  float: right;
+  background-blend-mode: color-dodge;
+  background: #29b6f6;
+}
+
+#chatbox {
+  width: 800px;
+  height: auto;
+  margin-left: 50px;
+  margin-top: 10px;
+  border-radius: 7px;
+  background-color: #38ada9;
+  padding: 5px 7px 5px;
+  overflow: auto;
+}
+#chatuname {
+  font-weight: bolder;
+  font-family: cursive;
+  float: left;
+}
+#chattime {
+  font-weight: lighter;
+  float: right;
+  font-family: cursive;
+  font-style: oblique;
+  font-size: medium;
+}
+#chatmeg {
+  font-family: cursive;
+  display: inline-block;
 }

@@ -76,8 +76,8 @@ include ("config.php")
               <?php 
               // Getting name from $_SESSION
               #code...
-              if(isset($_SESSION['s_username'])) {
-              echo '<td><input type="text" name="s_username" value="'.$_SESSION['s_username'].'" readonly required /></td>';
+              if(isset($_SESSION['username'])) {
+              echo '<td><input type="text" name="s_username" value="'.$_SESSION['username'].'" readonly required /></td>';
               } else {
               echo "<td><a href='signin.php'>Please Login To Access</a></td>";
               // If there is no value in $_SESSION
@@ -103,13 +103,13 @@ include ("config.php")
   // Inserting new comments to db
   if (isset($_POST["b_submit"])){
     // Getting the value from comment form
-    $s_username = $_POST["s_username"];
+    $username = $_POST["s_username"];
     $comment = $_POST["comment"];
     // If name and comment box is filled only, insert that to db
-    if ($s_username != "" && $comment != "") {
+    if ($username != "" && $comment != "") {
       # code...
       //Inserting into comment db
-      $sql = "INSERT INTO comments(name,comment,logs)VALUES('$s_username','$comment',NOW())";
+      $sql = "INSERT INTO comments(name,comment,logs)VALUES('$username','$comment',NOW())";
       // Connecting Query to DB
       $conn -> query($sql);
     } else {

@@ -62,11 +62,11 @@ include ("config.php")
           <table id="login_table">
             <tr>
               <td>Username:</td>
-              <td><input type="text" name="s_username" required /></td>
+              <td><input type="text" name="username" required /></td>
             </tr>
             <tr>
               <td>Password:</td>
-              <td><input type="password" name="s_password" required /></td>
+              <td><input type="password" name="password" required /></td>
             </tr>
             <tr>
               <td><input type="submit" name="s_submit" value="Login" id="subtn"/></td>
@@ -86,8 +86,8 @@ include ("config.php")
     // when submitting the form, it takes the data and check
     if (isset($_POST["s_submit"])) {
       # code...
-      $s_username = $_POST["s_username"];
-      $s_password = $_POST["s_password"];
+      $s_username = $_POST["username"];
+      $s_password = $_POST["password"];
       if ($s_username!="" && $s_password!="") {
         // validating the username="$s_username" and password="$s_password"
         // SQL query goes here
@@ -104,7 +104,7 @@ include ("config.php")
         // num_rows==1 means, at a time only one user data has to be validated
         if ($result ->num_rows==1) {
           // maintaining session
-          $_SESSION["s_username"] = "$s_username";
+          $_SESSION["username"] = "$s_username";
           # code...
           header("location:home.php");
           // id username&&password valid, redirect to home.php
